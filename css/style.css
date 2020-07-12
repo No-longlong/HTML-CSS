@@ -1,0 +1,42 @@
+
+/* 코멘트는 자주 쓰기 때문에, 컨트롤 슬래시로 가능 */
+/* 코드 드래그해서 컨트롤 슬래시해도 전체가 코멘트가 된다. */
+
+body {
+    margin: 0;
+}
+
+/* 머리말 */
+h1 {
+   text-align: center;
+   margin-top: 75px;
+   margin-bottom: 75px;
+}
+
+/* 자기 소개 */
+.movie {
+    background-color: #eee;
+    border-radius: 20px;
+    margin-bottom: 50px;
+    padding: 50px;
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.movie .title {
+    text-align: center;
+}
+
+.movie .poster {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+/* 내용 */
+.movie .summary {
+  text-align: center;
+}
