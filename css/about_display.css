@@ -16,3 +16,8 @@
     그래서 text-align: center도 먹히는 것.
     그런데 왜 계속 display:block으로 해놓고 auto로 가운데 설정을 했을까?
     이미지 하나 가운데정렬하자고 부모요소에 text-align: center을 하는게 불필요하다 생각.*/
+
+/* 이미지 링크 걸기 */
+/* div로 묶은 것들이 있을텐데, 그 div 대신에 a태그로 넣어라. 
+    div는 block인데 a는 inline이므로 레이아웃이 망가짐
+    그래서 a를 block으로 바꿔줘야 한다.*/
