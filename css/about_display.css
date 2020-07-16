@@ -1,0 +1,18 @@
+/* Display */
+/* inline, block */
+/* 새로운 줄로 가려는 성향(block).
+    기본적으로 태그마다 갖고있는 성향들이 있다.
+    억지로 바꾸는 경우도 있다.
+
+    예를 들어 i 태그는 원래 inline인데
+    css에서 display:block으로 설정해주면
+    새로운 줄로 가려고 한다. 
+    
+    div태그는 새로운 줄로 가려는 display인데,
+    display:inline으로 바꾸면 새로운 줄로 가려고 하지 않음.*/
+/* inline은 가로세로 길이 개념 없음. width height를 설정해도 의미없이 auto로 나온다. */
+/* inline-block: width height를 설정하면 auto가 아닌 설정대로 생겨진다. */
+/* img는 inline-block같지만, 사실 inline이다(큰 글씨처럼 생각) 
+    그래서 text-align: center도 먹히는 것.
+    그런데 왜 계속 display:block으로 해놓고 auto로 가운데 설정을 했을까?
+    이미지 하나 가운데정렬하자고 부모요소에 text-align: center을 하는게 불필요하다 생각.*/
