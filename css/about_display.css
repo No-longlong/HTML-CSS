@@ -10,10 +10,25 @@
     
     div태그는 새로운 줄로 가려는 display인데,
     display:inline으로 바꾸면 새로운 줄로 가려고 하지 않음.*/
-/* inline은 가로세로 길이 개념 없음. width height를 설정해도 의미없이 auto로 나온다. */
-/* inline-block: width height를 설정하면 auto가 아닌 설정대로 생겨진다. */
-/* img는 inline-block같지만, 사실 inline이다(큰 글씨처럼 생각) 
-    그래서 text-align: center도 먹히는 것.
+
+/* inline은 가로세로 길이 개념 없음. width height를 설정해도 의미없이 auto로 나온다.
+    (확인 결과 영상은 auto지만, 개발자에서는 width height나옴. 하지만 적혀있는 것 뿐이고
+    실제로 inline의 너비와 높이를 변경한 것은 아니다.
+    inline은 안에 있는 내용물에 따라서 가로 세로 길이가 정해진다. */
+    /* inline은 딱 필요한 만큼만 정해진다. */
+
+/* inline-block: block처럼 독립적으로 width를 100% 차지하고 싶지는 않지만
+    다른 것들과 이어지면서, 고유의 width나 height를 갖고 싶은 경우.
+    inline은 width, height개념이 없고, block은 다른것들과 연결이 안되기 때문에
+    inline-block을 사용한다. 
+    width height를 설정하면 auto가 아닌 설정대로 생겨진다. */
+
+/* img는 inline-block같지만(다른것과 한 줄에서 독립적이지 않지만 고유의 너비 높이가 있기 때문에), 
+    그러나 사실 inline이다(큰 글씨처럼 생각) 
+    img의 inline은 '대체요소(replaced element)이다.     
+    가로세로 길이를 설정할 수 있는 특별한 inline이라고 생각.
+    그래서 text-align: center도 먹히는 것.(inline과 inline-block의 특징)
+    
     그런데 왜 계속 display:block으로 해놓고 auto로 가운데 설정을 했을까?
     이미지 하나 가운데정렬하자고 부모요소에 text-align: center을 하는게 불필요하다 생각.*/
 
@@ -21,3 +36,76 @@
 /* div로 묶은 것들이 있을텐데, 그 div 대신에 a태그로 넣어라. 
     div는 block인데 a는 inline이므로 레이아웃이 망가짐
     그래서 a를 block으로 바꿔줘야 한다.*/
+
+/* 이미지 + 텍스트 링크 걸기 */
+/* a태그가 display로 div의 역할을 하는 것. */
+
+/* base line */
+/*  text들의 크기가 달라도 각 텍스트 아래에 있는 줄을 기준으로 정렬시킨다.(텍스트와 완벽히 밀착)*/
+
+/* div에서의 inline-block */
+/* 1) div의 마지막 태그를 기준으로 baseline이 설정되서, 
+    해당 div의 앞에 내용과 baseline이 맞춰진다. */
+/* 2) div에서 내용이 아예 없으면, 해당 block의 부분(box)의 밑부분이
+    baseline이 된다. */
+/* box안에 내용중 마지막이 baseline의 기준이 되었는데,
+    3) 만약 이 박스(block)가 height가 줄어든다면?
+    내용은 그대로 보이되(visible), 박스는 작게 설정될 것.
+    넘쳐난 내용을 잘라버리려면 overflow: scroll, hidden; 을 설정해주고
+    그냥 보여주려면 디폴트값인 visible로 설정해준다. 
+    텍스트가 보일 경우(visible) baseline은 마지막 텍스트의 아랫부분이 되지만
+    잘라버릴 경우 block의 height아랫부분이 baseline이 된다.*/
+/* visible일때는 inline의 basseline?, 안보일때는 block이 baseline? */
+.container {
+    background-color: orange;
+}
+/* .alex {
+    font-size: 90px;
+    background-color: pink;
+} */
+
+.inline-block {
+    display: inline-block;
+    background-color: blue;
+    color: white;
+    width: 100px;
+    height: 50px;
+    overflow: visible;
+}
+
+/* vertical-align top */
+/* 부모 요소인 x의 baseline을 따른다. */
+/* 어느 한 요소를 top으로 설정한 경우에는 같은 수준의 요소 중 가장 높은 요소의 높이를 기준으로 맞춘다.
+    그러나 가장 높은 것을 top으로 설정하면, 그 다음으로 높은것과 위를 맞추도록 그 다음것을 올린다.
+    그러면 올라온 것과의 baseline를 맞추도록 나머지 애들도 같이 baseline을 맞추기 때문에
+    자연스럽게 나머지 요소가 모두 올라오는것처럼 보임.
+    그런데, 애초에 top으로 설정한 높은 것을 내려오도록 해도 되는데 그렇게 하지 않은 이유는, 
+    해당 줄의 세로 길이가 늘어나버리기 때문이다. 
+    baseline은 상황에 맞춰 바꿔진다.
+    baseline은 vertical align을 충족시키면서, 줄의 세로 길이가 최소가 되도록 움직여진다.*/
+
+.alex {
+    font-size: 90px;
+    background-color: pink;
+    /* vertical-align: top; */
+    vertical-align: middle;
+}
+
+.ben {
+    font-size: 30px;
+    background-color: lime;
+    /* vertical-align: top; */
+}
+
+.chris {
+    font-size: 60px;
+    background-color: yellow;
+    /* vertical-align: top; */
+}
+
+/* vertical align middle */
+/* middle도 top과 동일하다고 볼 수 있다.
+    vertical align이 만족하면서 세로의 움직임이 최소화되도록 한다.
+    x를 기준으로 baseline이 중앙에 맞춰지도록 움직이는데,
+    alex를 middle로 맞출 경우에는 나머지 요소들도 맞춰야 되기 때문에
+    alex를 제외한 모든 요소가 가운데로 온다. 심지어 부모인 x도..? */
