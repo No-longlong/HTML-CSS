@@ -1,3 +1,10 @@
+/* 2가지로 해결할 수 있다.
+  1. 임시 div를 만들어서 height를 100%로 설정
+  2. line-height를 부모요소만큼 설정.
+  2번에서 주의점은, 자식에게는 line-height: normal;을 해줘야 한다.
+  해주지 않을 경우 상속이 중복으로되서 상당히 복잡해져 보인다. */
+
+
 body {
   margin: 0;
   font-family: 'Noto Sans KR', sans-serif;
@@ -15,15 +22,12 @@ body {
 #logo {
   font-family: serif;
   float: left;
-  display: inline-block;
-  vertical-align: middle;
-  height: 100%;
-  /*margin-top: auto;*/
-  /*margin-bottom: auto;*/
-  
+  line-height: 60px;
+
   /* 이건 지우세요 */
-  /*background-color: orange;*/
+  /* background-color: orange; */
 }
+
 
 .hero-header {
   background-image: url("../images/hero_image.jpg");
@@ -31,13 +35,14 @@ body {
   background-position: center center;
   height: 670px;
   text-align: center;
-  
 }
 
 .hero-header .info {
   display: inline-block;
   vertical-align: middle;
-  /*background-color: orange;*/;
+  /* 이건 지우세요 */
+  /* background-color: orange; */
+  width: 100%;
 }
 
 .hero-header .info h1 {
@@ -64,15 +69,15 @@ body {
   text-decoration: none;
   border-radius: 5px;
 }
-
+/* 
 .helper {
   display: inline-block;
   height: 100%;
   vertical-align: middle;
-}
+} */
 
-/*#logo_parent {*/
-/*  display: inline-block;*/
-/*  height: 100%;*/
-/*  vertical-align: middle;*/
-/*}*/
+.helper2 {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
