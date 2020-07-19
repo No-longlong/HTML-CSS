@@ -1,0 +1,25 @@
+/* stamp의 포지션을 absolute로 해보면
+  브라우저에 맞춰줘서 포지셔닝이 된다(fixed)
+  부모 요소에는 포지션 설정을 안해줬는데,,,?
+  이는 body태그에 있는 속성인 것 같음.
+  그래서 부모요소에 position을 해주고서
+  해당 포지셔닝을 계속 상속받도록 absolute를 해주는 것이다.*/
+
+.env-div {
+  width: 500px;
+  height: 232px;
+  position: relative;
+}
+
+.address {
+  font-family: cursive;
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+}
+
+.stamp {
+  position: absolute;
+  right: 30px;
+  top: 30px;
+}
